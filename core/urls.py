@@ -11,6 +11,8 @@ urlpatterns = [
     path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     #path('register/', views.RegisterView.as_view(), name='auth_register'),
+    path('users/',views.AllUsersView.as_view(),name='get-user'),
+    path('connected-user/',views.GetUserView.as_view(),name='get-connected-user'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
