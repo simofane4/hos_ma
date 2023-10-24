@@ -28,6 +28,11 @@ INSTALLED_APPS = [
     
     # my apps 
     'core',
+    'assistant',
+    'cabinet',
+    'doctor',
+    'patient',
+    
     
     # models  installed apps
     'rest_framework',
