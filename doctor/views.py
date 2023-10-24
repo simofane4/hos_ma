@@ -3,11 +3,11 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.views import APIView, status 
 from rest_framework import generics
 from rest_framework.response import Response
-from django.contrib.auth.models import User,Group
+
+from django.contrib.auth.models import Group
 
 
-
-from core.models import Doctor, Specialite , Cabinet
+from core.models import Doctor, Specialite , Cabinet , User
 from .serializers import DoctorSerializer, GetDoctorSerialzer, UpdateDoctorSerializer,  UserSerializer
 
 
@@ -49,7 +49,7 @@ class CreateDoctorView(generics.ListCreateAPIView):
     
 
 
-class GetAllDoctorsView(APIView):
+class GetDoctorView(APIView):
 
     permission_classes = (IsAuthenticated,)
     def get(self, request):

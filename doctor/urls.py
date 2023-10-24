@@ -9,7 +9,7 @@ from doctor import views
 
 urlpatterns = [
     path('create/',views.CreateDoctorView.as_view(),name='create-doctor'),
-    path('get',views.GetAllDoctorsView.as_view(),name='get-all-doctors'),
+    path('get',views.GetDoctorView.as_view(),name='get-doctor'),
     path('update/<int:id>/',views.UpdateDoctorView.as_view(),name='update-doctor'),
     path('delete/<int:id>/',views.DeleteDoctorView.as_view(),name='delete-doctor'),
 

@@ -23,7 +23,7 @@ class GetCabinetView(APIView):
         serializer = CabinetSerializer(cabinet,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class CabinetUpdateView(generics.RetrieveUpdateAPIView):
+class UpdateCabinetView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Cabinet.objects.all()
     serializer_class = CabinetSerializer
@@ -43,7 +43,7 @@ class CabinetUpdateView(generics.RetrieveUpdateAPIView):
         serializer = CabinetSerializer(instance)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class CabinetDeleteView(generics.RetrieveDestroyAPIView):
+class DeleteCabinetView(generics.RetrieveDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Cabinet.objects.all()
     serializer_class = CabinetSerializer
