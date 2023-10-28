@@ -4,12 +4,12 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.views import APIView, status 
 from rest_framework import generics
 from rest_framework.response import Response
-from django.contrib.auth.models import User,Group
+from django.contrib.auth.models import Group
 
 
 
 
-from core.models import Cabinet,Assistant
+from core.models import Cabinet , Assistant ,User
 from .serializers import AssistantSerializer , GetAssistantSerializer
 
 # Create your views here.
@@ -43,14 +43,14 @@ class CreateAssistantView(generics.ListCreateAPIView):
         content = {'message':"votre compte a été créé !!"}
         return Response(content, status=status.HTTP_201_CREATED)
 
-class AssistantGetView(APIView):
+class GetAssistantView(APIView):
     permission_classes = (IsAuthenticated,)
     def get(self, request):
         assistant = Assistant.objects.all()
         serializer = GetAssistantSerializer(assistant,many=True)
         return Response(serializer.data , status=status.HTTP_200_OK)
 
-class AssistantUpdateView(generics.RetrieveUpdateAPIView):
+class UpdateAssistantView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class  = AssistantSerializer
     ookup_field = 'id'
@@ -70,7 +70,7 @@ class AssistantUpdateView(generics.RetrieveUpdateAPIView):
 
 
 
-class AssistantDeleteView(generics.RetrieveDestroyAPIView):
+class DeleteAssistantView(generics.RetrieveDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Assistant.objects.all()
     serializer_class = AssistantSerializer

@@ -3,10 +3,9 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.views import APIView, status 
 from rest_framework import generics
 from rest_framework.response import Response
-from django.contrib.auth.models import User,Group
 
 # Create your views here.
-from core.models import ActeDemander,ActeFait
+from core.models import ActeDemander,ActeFait,User
 from .serializers import ActeDemanderSerializer , ActeFaitSerializer
 
 
@@ -84,7 +83,7 @@ class GetActeFaitView(APIView):
 
 
 
-class ActeDemanderUpdateView(generics.RetrieveUpdateAPIView):
+class UpdateActeDemanderView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = ActeDemander.objects.all()
     serializer_class =  ActeDemanderSerializer
@@ -108,7 +107,7 @@ class ActeDemanderUpdateView(generics.RetrieveUpdateAPIView):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class ActeFaitUpdateView(generics.RetrieveUpdateAPIView):
+class UpdateActeFaitView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = ActeFait.objects.all()
     serializer_class =  ActeFaitSerializer
@@ -136,13 +135,13 @@ class ActeFaitUpdateView(generics.RetrieveUpdateAPIView):
 
 
 
-class ActeDemanderDeleteView(generics.RetrieveDestroyAPIView):
+class DeleteActeDemanderView(generics.RetrieveDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = ActeDemander.objects.all()
     serializer_class =  ActeDemanderSerializer
     lookup_field = 'id'
 
-class ActeFaitDeleteView(generics.RetrieveDestroyAPIView):
+class DeleteActeFaitView(generics.RetrieveDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = ActeFait.objects.all()
     serializer_class =  ActeFaitSerializer

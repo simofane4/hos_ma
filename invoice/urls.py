@@ -3,15 +3,15 @@ from django.contrib import admin
 from django.urls import path
 
 from django.conf.urls.static import static
-from assistant import views
+from invoice import views
 
 
 
 urlpatterns = [
-    path('create/',views.CreateAssistantView.as_view(),name='create-assistant'),
-    path('get',views.GetAssistantView.as_view(),name='get-assistant'),
-    path('update/<int:id>/',views.UpdateAssistantView.as_view(),name='update-assistant'),
-    path('delete/<int:id>/',views.DeleteAssistantView.as_view(),name='delete-assistant'),
+    path('create/',views.CreateInvoiceView.as_view(),name='create-invoice'),
+    path('get/',views.GetInvoiceView.as_view(),name='get-invoice'),
+    path('update/<int:id>/',views.UpdateInvoiceView.as_view(),name='update-invoice'),
+    path('delete/<int:id>/',views.DeleteInvoiceView.as_view(),name='delete-invoice'),
 
 ]   
 if settings.DEBUG:

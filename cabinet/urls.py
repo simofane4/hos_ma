@@ -10,8 +10,8 @@ from cabinet import views
 urlpatterns = [
     path('create/',views.CreateCabinetView.as_view(),name='create-cabinet'),
     path('get',views.GetCabinetView.as_view(),name='get-cabinet'),
-    path('update/<int:id>/',views.CabinetUpdateView.as_view(),name='update-cabinet'),
-    path('delete/<int:id>/',views.CabinetDeleteView.as_view(),name='delete-cabinet'),
+    path('update/<int:id>/',views.UpdateCabinetView.as_view(),name='update-cabinet'),
+    path('delete/<int:id>/',views.DeleteCabinetView.as_view(),name='delete-cabinet'),
 
 ]   
 if settings.DEBUG:

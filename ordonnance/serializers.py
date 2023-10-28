@@ -1,30 +1,12 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from core.models import Assistant
+from core.models import User
+from core.models import Ordonnance
 
 
 
 
-class AssistantSerializer(serializers.ModelSerializer):
+
+class OrdonnanceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Assistant
-        fields = '__all__'
-
-
-
-class UserSz(serializers.ModelSerializer):
-    class Meta :
-        model = User
-        fields = (
-        "username", 
-        "first_name", 
-        "last_name", 
-        "email" 
-        )
-
-class GetAssistantSerializer(serializers.ModelSerializer):
-    user = UserSz()
-    cabinet = serializers.SlugRelatedField(slug_field='name',read_only=True)
-    class Meta : 
-        model = Assistant
+        model = Ordonnance
         fields = '__all__'

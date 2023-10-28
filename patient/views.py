@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.views import APIView, status 
 from rest_framework import generics
 from rest_framework.response import Response
-from django.contrib.auth.models import User
+from core.models import User
 
 
 from core.models import Patient
@@ -75,7 +75,7 @@ class UpdatePatientView(generics.RetrieveUpdateAPIView):
 
 
 
-class UpdatePatientView(generics.RetrieveDestroyAPIView):
+class DeletePatientView(generics.RetrieveDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
