@@ -135,7 +135,7 @@ REST_FRAMEWORK = {
 MEDIA_ROOT = '/media/'
 
 MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
