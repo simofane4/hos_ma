@@ -17,7 +17,7 @@ class CreateCabinetView(generics.ListCreateAPIView):
     
     
 class GetCabinetView(APIView):
-    permission_classes = (IsAuthenticated, )
+    #permission_classes = (IsAuthenticated, )
     def get(self, request):
         cabinet = Cabinet.objects.all()
         serializer = CabinetSerializer(cabinet,many=True)

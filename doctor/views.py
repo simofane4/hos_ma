@@ -51,7 +51,7 @@ class CreateDoctorView(generics.ListCreateAPIView):
 
 class GetDoctorView(APIView):
 
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     def get(self, request):
         doctor = Doctor.objects.all()
         serializer = GetDoctorSerialzer(doctor,many=True)

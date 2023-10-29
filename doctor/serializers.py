@@ -39,6 +39,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             required=True,
             validators=[UniqueValidator(queryset=User.objects.all())]
             )
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class GetDoctorSerialzer(serializers.ModelSerializer):
     user = RegisterSerializer(required=True, many=False)

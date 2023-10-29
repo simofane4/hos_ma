@@ -61,11 +61,10 @@ class Assistant(models.Model):
 
 
 class Patient(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     cabinet = models.ForeignKey(Cabinet,on_delete=models.CASCADE)
     cin = models.CharField(max_length=25,unique=True)
     img = models.ImageField(default="patient/default.png",upload_to='patient/')
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
     gender = models.CharField(max_length=255,choices=gendelist)
     birthday = models.DateField(blank=True,null=True)
     phone = models.CharField(max_length=25,unique=True)
@@ -79,7 +78,7 @@ class Patient(models.Model):
         olde = current_date - birth_date 
         return olde
     def __str__(self):
-        return f'  {self.firstname} {self.lastname}'
+        return f'  {self.user.first_name} {self.user.last_name}'
 
 class PatientFile(models.Model):
     patient = models.ForeignKey(Patient ,on_delete=models.CASCADE)

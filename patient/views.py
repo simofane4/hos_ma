@@ -39,7 +39,7 @@ class CreatePatientView(generics.ListCreateAPIView):
 
 
 class GetPatientView(APIView):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
     def get(self, request):
         try:
             patient_data = Patient.objects.filter(cabinet=request.user.doctor.cabinet.id)
