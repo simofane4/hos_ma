@@ -10,6 +10,7 @@ from django.contrib.auth.models import Group
 
 
 from .serializers import  UserSerializer
+from core.models import User
 # Create your views here.
 
 
@@ -17,7 +18,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        groups_list = user.groups.all().values_list('name',flat =True).distinct()
+        
         # Add custom claims
         token['name'] = user.username
         token['first_name'] = user.first_name
@@ -25,9 +26,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['email'] = user.email
         token['active'] = user.is_active
         try:
-            token['groups'] = groups_list[0]
+            token['role'] = user.role
         except IndexError:
-            token['groups'] = None
+            token['role'] = None
         return token
 
 class MyTokenObtainPairView(TokenObtainPairView):
