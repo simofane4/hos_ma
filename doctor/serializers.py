@@ -1,7 +1,17 @@
 from rest_framework import serializers
-from core.models import Doctor
+from core.models import Doctor,Specialite
 from core.models import User
+from cabinet.serializers import CabinetSerializer
 from rest_framework.validators import UniqueValidator
+
+
+
+
+class SpecialiteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Specialite
+        fields = '__all__'
+
 
 
 
@@ -34,6 +44,18 @@ class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
         fields = '__all__'
+
+
+class UserDoctorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+        "id", 
+        "username", 
+        "first_name", 
+        "last_name", 
+        "email", 
+        "role",)
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
             required=True,
@@ -44,7 +66,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class GetDoctorSerialzer(serializers.ModelSerializer):
-    user = RegisterSerializer(required=True, many=False)
+    user = UserDoctorSerializer(required=True, many=False)
+    specialiste = SpecialiteSerializer(required=True, many=False)
+    cabinet = CabinetSerializer(required=True, many=False)
     class Meta:
         model = Doctor
         fields = '__all__'  
