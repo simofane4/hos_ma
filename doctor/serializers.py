@@ -9,11 +9,11 @@ from rest_framework.validators import UniqueValidator
 class SpecialiteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Specialite
-        fields = '__all__'
+        fields = ('name',)
 class CabinetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cabinet
-        fields = '__all__'
+        fields = ('name',)
 
 
 
