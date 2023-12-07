@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from core.models import Doctor,Specialite
+from core.models import Doctor,Specialite , Cabinet
 from core.models import User
-from cabinet.serializers import CabinetSerializer
 from rest_framework.validators import UniqueValidator
 
 
@@ -10,6 +9,10 @@ from rest_framework.validators import UniqueValidator
 class SpecialiteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Specialite
+        fields = '__all__'
+class CabinetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cabinet
         fields = '__all__'
 
 
